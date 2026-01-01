@@ -5,12 +5,12 @@
     </a>
   </div>
 
-  <script data-goatcounter="https://yoursite.goatcounter.com/count"
+  <script data-goatcounter="https://enochyu.goatcounter.com/count"
     async src="//gc.zgo.at/count.js"></script>
 
   <script>
     (function () {
-      fetch("https://yoursite.goatcounter.com/counter/TOTAL.json?cb=" + Date.now())
+      fetch("https://enochyu.goatcounter.com/counter/TOTAL.json?cb=" + Date.now())
         .then(r => {
           if (!r.ok) throw new Error("HTTP " + r.status);
           return r.json();
@@ -36,7 +36,7 @@
 
       if (el) {
         const path = el.getAttribute("data-gc-path");
-        const url = `yoursite.goatcounter.com{encodeURIComponent(path)}.json?cb=${Date.now()}`;
+        const url = `enochyu.goatcounter.com{encodeURIComponent(path)}.json?cb=${Date.now()}`;
 
         fetch(url)
           .then(r => r.ok ? r.json() : Promise.reject(r.status))
