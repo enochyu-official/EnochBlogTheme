@@ -3,15 +3,16 @@
 
     <div class="article-meta">
       <i class="far fa-calendar"></i> {{ .Date.Format "January 2, 2006" }}
-      <span class="mx-2">•</span>
+      <span class="mx-2">|</span>
       <i class="far fa-clock"></i> {{ .ReadingTime }} min read
-      <span class="mx-2">•</span>
+      <span class="mx-2">|</span>
       <i class="far fa-file-text"></i> {{ .WordCount }} words
-      <span class="mx-2">•</span>
-      <i class="far fa-eye"></i> Loading... views
+      <span class="mx-2">|</span>
+      <i class="far fa-eye"></i> 
+      <span id="page-views" data-gc-path="{{ .RelPermalink }}">Loading...</span> views
 
       {{ with .Params.categories }} 
-      <span class="mx-2">•</span>
+      <span class="mx-2">|</span>
       <i class="fas fa-folder"></i> 
       {{ range first 1 . }}
         <a href="{{ "categories" | relURL }}/{{ . | urlize }}/">{{ . }}</a>
