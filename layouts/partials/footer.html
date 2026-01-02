@@ -43,7 +43,7 @@
         }
         path = path.replace(/\/$/, "");
 
-        const url = `https://enochyu.goatcounter.com/counter/blog${path}.json`;
+        const url = `https://enochyu.goatcounter.com/counter/${path}.json`;
 
         fetch(url)
           .then(r => {
