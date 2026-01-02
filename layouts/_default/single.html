@@ -11,10 +11,11 @@
         <i class="far fa-file-text"></i> {{ .WordCount }} words
         <span class="mx-2">|</span>
         <i class="far fa-eye"></i> 
-        <span class="page-views"
-          data-gc-path="{{ replaceRE "^/blog" "" .RelPermalink }}">
-          Loading...
-        </span> views
+
+        {{ $basePath := (urls.Parse .Site.BaseURL).Path | strings.TrimSuffix "/" }}
+        {{ $path := .RelPermalink | strings.TrimSuffix "/" }}
+        {{ if $basePath }}{{ $path = strings.TrimPrefix $basePath $path }}{{ end }}
+        <span class="page-views" data-gc-path="{{ $path }}">Loading...</span> views
 
         {{ with .Params.categories }} 
         <span class="mx-2">|</span>
