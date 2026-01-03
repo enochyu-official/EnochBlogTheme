@@ -11,15 +11,22 @@
         integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ"></script>
 
   <script>
-    let r = new XMLHttpRequest();
-    r.addEventListener('load', function() {
-        document.querySelector('#gc-total-views').innerText = JSON.parse(this.responseText).count
-    })
+    window.goatcounter.visit_count({append: '#gc-total-views'});
 
-    let path = window.goatcounter.get_data()['p']
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const path = window.location.pathname;
+        const url = `https://enochyugoatcounter.com/counter/${encodeURIComponent(path)}.json`;
 
-    r.open('GET', 'https://enochyu.goatcounter.com/counter/' + encodeURIComponent(path) + '.json')
-    r.send()
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            const el = document.querySelector('#gc-total-views');
+            if (el) el.innerText = data.count;
+          })
+          .catch(err => console.error("GoatCounter fetch error:", err));
+      }, 500);
+    });
   </script>
 
   <script>
